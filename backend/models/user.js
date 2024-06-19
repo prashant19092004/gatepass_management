@@ -21,27 +21,18 @@ const userSchema = new mongoose.Schema({
         type:String , 
         enum:["Male","Female"]
     },
-    admission_no:{
-        type: String,
-    },
-    birth_date: {
-        type: String
-    },
     mob: {
         type: Number
-    },
-    room_no: {
-        type: String
-    },
-    department: {
-        type: String
-    },
-    parents_mob: {
-        type : Number
     },
     requests : {
         type: [mongoose.Schema.Types.ObjectId],
         ref: "Request"
+    },
+    admission_no : {
+        type : String
+    },
+    room_no :{
+        type : String
     }
 
  })

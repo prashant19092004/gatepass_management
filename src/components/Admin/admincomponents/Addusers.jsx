@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Adduser = () => {
   const [signupData, setSignupData] = useState({
     name: "",
     email: "",
@@ -18,7 +18,7 @@ const Signup = () => {
     setSignupData({ ...signupData, [e.target.name]: e.target.value });
   };
   const submitHandle = async () => {
-    console.log(signupData);
+    // console.log(signupData);
     if (signupData.password !== signupData.confirm_password) {
       return toast.error("password !== confirm password does not match");
     }
@@ -27,10 +27,10 @@ const Signup = () => {
         "http://localhost:9000/signup",
         signupData
       );
-      navigate("/login")
-      toast.success(response.data.message);
+      // navigate("/login")
+      toast.success("jj");
     } catch (err) {
-      toast.error(err.response.data.Message);
+      toast.error("jj");
     }
   };
 
@@ -138,4 +138,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Adduser;

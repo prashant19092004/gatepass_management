@@ -12,6 +12,15 @@ import Adminlogin from './components/Home/Adminlogin';
 import Userlogin from './components/Home/Userlogin';
 import Student from './components/Student/Student';
 import Adminsignup from './components/Adminsignup';
+import Userprofile from './components/Student/student_component/Userprofile';
+import Userhistory from './components/Student/student_component/Userhistory';
+import Userrequest from './components/Student/student_component/Userrequest';
+import Regularpass from './components/Student/student_component/Regularpass';
+import Homepass from './components/Student/student_component/Homepass';
+import Requests from './components/Admin/admincomponents/Requests';
+import Accepted_requests from './components/Admin/admincomponents/Accepted_requests';
+import Rejected_requests from './components/Admin/admincomponents/Rejected_requests';
+import Addusers from './components/Admin/admincomponents/Addusers';
 
 function App() {
 
@@ -32,25 +41,53 @@ function App() {
         },
         {
           path:"/admin",
-          element: <Admin />,
-          children:[
+          element:<Admin />,
+          children: [
             {
-              path:'/admin/',
-              element:<Fine />
+              path: "/admin/",
+              element: <Requests />
             },
             {
-              path:'/admin/published',
-              element:<Admission />
+              path: "/admin/accepted_requests",
+              element: <Accepted_requests />
             },
             {
-              path:'/admin/profile',
-              element:<Event />
+              path: "/admin/rejected_requests",
+              element: <Rejected_requests />
+            },
+            {
+              path: "/admin/add_users",
+              element: <Addusers />
             }
           ]
         },
         {
           path:"/student",
-          element:<Student />
+          element:<Student />,
+          children: [
+            {
+              path: "/student/",
+              element: <Userprofile />
+            },
+            {
+              path: "/student/history",
+              element: <Userhistory />
+            },
+            {
+              path: "/student/request",
+              element: <Userrequest />,
+              children: [
+                {
+                  path: "/student/request/regularpass",
+                  element: <Regularpass />
+                },
+                {
+                  path: "/student/request/homepass",
+                  element: <Homepass />
+                }
+              ]
+            }
+          ]
         },
         {
           path: "/tempregister",

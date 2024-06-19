@@ -3,13 +3,18 @@ const mongoose = require("mongoose")
 const requestSchema = new mongoose.Schema({
     date: {
         type: Date,
-        default: Date.now
+        required : true
     },
     status:{
         type: String,
-        enum:["Pending","Approved","Reject"]
+        enum:["Pending","Approved","Reject"],
+        default: "Pending"
     },
     purpose: {
+        type: String,
+        required: true
+    },
+    pass_type: {
         type: String
     },
     user: {
@@ -22,4 +27,4 @@ const requestSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.Model("Request", requestSchema);
+module.exports = mongoose.model("Request", requestSchema);

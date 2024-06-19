@@ -5,10 +5,10 @@ require("dotenv").config();
 exports.auth = async (req, res, next) => {
   try {
     const token =
-      req.body.token ||
-      req.cookies.token ||
+      // req.body.token ||
+      // req.cookies.token ||
       req.header("Authorization").replace("Bearer ", "");
-
+    // console.log(token);
     try {
       const decode = jwt.verify(token, process.env.JWT_SECRET);
       req.user = decode;

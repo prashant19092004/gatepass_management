@@ -26,8 +26,13 @@ const Adminlogin = () => {
           const response = await axios.post(
             "http://localhost:9000/adminlogin",
             loginData
-          );
-            navigate("/admin")
+          )
+          .then((res)=> {
+            console.log(res.data);
+            localStorage.setItem("token", res.data.token);
+          })
+
+          navigate("/admin")
           toast.success(response.data.message);
         } catch (err) {
           toast.error(err.response.data.message);

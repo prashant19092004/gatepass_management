@@ -121,7 +121,8 @@ exports.adminlogin = async (req, res) => {
 
 exports.usersignup = async (req, res) => {
     try {
-        const { name, email, password } = req.body
+        console.log(req.body);
+        const { name, email, password, contact } = req.body
         const existingUser = await User.findOne({ email })
         if (existingUser) {
             return res.status(400).json({
@@ -141,7 +142,7 @@ exports.usersignup = async (req, res) => {
         }
 
         const newUser = await User.create({
-            name, email, password: hashedpassword
+            name, email, password: hashedpassword, contact
         })
 
         return res.status(200).json({

@@ -11,7 +11,7 @@ app.use(cokkieParser());
 
 app.use(express.json());
 const userRoutes = require("./routes/userRoutes");
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 9000;
 
 app.use("/", userRoutes);
 
